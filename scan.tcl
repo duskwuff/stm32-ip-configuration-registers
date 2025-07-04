@@ -38,7 +38,7 @@ proc ipconfig_scan {workaddr startaddr endaddr} {
         if { $sidr == 0xa3c5dd04 } { set base [expr {$sidr_addr - 4096 + 4}] }
         if { $sidr == 0xa3c5dd08 } { set base [expr {$sidr_addr - 8192 + 4}] }
 
-        lappend results [format "%08x,%08x,%s,-" $base $sidr_addr [join [lmap x $ipconfig {format "%08x" $x}] ","]]
+        lappend results [format "%08x,%08x,%s,-," $base $sidr_addr [join [lmap x $ipconfig {format "%08x" $x}] ","]]
     }
 
     echo "\n"
@@ -57,5 +57,5 @@ proc ipconfig_probe {addr} {
     if { $sidr == 0xa3c5dd04 } { set base [expr {$sidr_addr - 4096 + 4}] }
     if { $sidr == 0xa3c5dd08 } { set base [expr {$sidr_addr - 8192 + 4}] }
 
-    echo [format "%08x,%08x,%s,-" $base $sidr_addr [join [lmap x $ipconfig {format "%08x" $x}] ","]]
+    echo [format "%08x,%08x,%s,-," $base $sidr_addr [join [lmap x $ipconfig {format "%08x" $x}] ","]]
 }
